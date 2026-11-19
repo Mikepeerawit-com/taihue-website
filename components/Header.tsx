@@ -28,13 +28,13 @@ export function LangSwitcher({ lang, suffix = "", dark = false }: { lang: Locale
 }
 
 /** `path` is the current page below /[lang]: "", "/quote", "/suppliers" or "/thanks". */
-function navLinks(lang: Locale, t: Dictionary, path: string) {
+function navLinks(lang: Locale, t: Dictionary, path: string, suppliers = false) {
   const here = path === "/thanks" ? "" : path;
   return [
     [`/${lang}`, t.nav.home],
     [`/${lang}#services`, t.nav.services],
-    [`/${lang}/quote`, t.nav.buyers],
-    [`/${lang}/suppliers`, t.nav.suppliers],
+    [`/${lang}/quote`, t.nav.quote],
+    ...(suppliers ? [[`/${lang}/suppliers`, t.nav.suppliers]] : []),
     [`/${lang}${here}#contact`, t.nav.contact],
   ];
 }
@@ -42,6 +42,8 @@ function navLinks(lang: Locale, t: Dictionary, path: string) {
 export default function Header({ lang, t, path = "", minimal = false }: { lang: Locale; t: Dictionary; path?: string; minimal?: boolean }) {
   const links = navLinks(lang, t, path);
   const current = `/${lang}${path}`;
+  const quoteHref = `/${lang}/quote`;
+  const cta = "rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-brand-600/30 transition hover:-translate-y-0.5 hover:bg-brand-700";
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/70">
       <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
@@ -52,29 +54,32 @@ export default function Header({ lang, t, path = "", minimal = false }: { lang: 
         </a>
         {!minimal && (
           <nav className="hidden items-center gap-7 text-sm font-medium text-slate-700 lg:flex">
-            {links.map(([href, label]) => (
-              <a
-                key={href}
-                href={href}
-                aria-current={href === current ? "page" : undefined}
-                className={`relative py-1 transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:rounded-full after:bg-brand-600 after:transition-transform hover:text-brand-700 hover:after:scale-x-100 ${href === current ? "text-brand-700 after:scale-x-100" : "after:scale-x-0"}`}
-              >
-                {label}
-              </a>
-            ))}
+            {links.map(([href, label]) =>
+              href === quoteHref ? (
+                <a key={href} href={href} aria-current={href === current ? "page" : undefined} className={cta}>
+                  {label}
+                </a>
+              ) : (
+                <a
+                  key={href}
+                  href={href}
+                  aria-current={href === current ? "page" : undefined}
+                  className={`relative py-1 transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:rounded-full after:bg-brand-600 after:transition-transform hover:text-brand-700 hover:after:scale-x-100 ${href === current ? "text-brand-700 after:scale-x-100" : "after:scale-x-0"}`}
+                >
+                  {label}
+                </a>
+              ),
+            )}
           </nav>
         )}
         <div className="flex items-center gap-1.5 sm:gap-3">
           <LangSwitcher lang={lang} suffix={path} />
           {!minimal && (
-            <a
-              href={`/${lang}/quote`}
-              className="hidden rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-brand-600/30 transition hover:-translate-y-0.5 hover:bg-brand-700 sm:inline-block"
-            >
-              {t.nav.cta}
+            <a href={quoteHref} className={`hidden sm:inline-block lg:hidden ${cta}`}>
+              {t.nav.quote}
             </a>
           )}
-          {!minimal && <MobileMenu links={links} cta={t.nav.cta} ctaHref={`/${lang}/quote`} label={t.ui.menu} />}
+          {!minimal && <MobileMenu links={links.filter(([href]) => href !== quoteHref)} cta={t.nav.quote} ctaHref={quoteHref} label={t.ui.menu} />}
         </div>
       </div>
     </header>
@@ -82,7 +87,7 @@ export default function Header({ lang, t, path = "", minimal = false }: { lang: 
 }
 
 export function Footer({ lang, t, path = "" }: { lang: Locale; t: Dictionary; path?: string }) {
-  const links = navLinks(lang, t, path);
+  const links = navLinks(lang, t, path, true);
   const head = "text-xs font-semibold tracking-widest text-slate-400 uppercase";
   return (
     <footer className="bg-slate-950 text-slate-300">

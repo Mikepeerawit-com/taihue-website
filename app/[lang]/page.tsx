@@ -54,12 +54,6 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 {t.hero.primary}
                 <Icon d={ARROW} className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </a>
-              <a
-                href={`/${lang}/suppliers`}
-                className="inline-flex items-center justify-center rounded-lg border border-white/50 px-7 py-3.5 text-base font-semibold text-white transition hover:bg-white/10"
-              >
-                {t.hero.secondary}
-              </a>
             </div>
           </div>
 
@@ -96,29 +90,23 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
 
         <Steps title={t.how.title} steps={t.how.steps} />
 
-        {/* Choose your path: buyers or suppliers */}
+        {/* Buyer-first call to action; suppliers get a small text link */}
         <section id="start" className="py-20 sm:py-28">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <SectionHead title={t.choose.title} />
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:gap-8">
-              {[
-                { c: t.choose.buyer, href: `/${lang}/quote`, primary: true },
-                { c: t.choose.supplier, href: `/${lang}/suppliers`, primary: false },
-              ].map(({ c, href, primary }) => (
-                <div key={href} className={`flex flex-col rounded-lg border border-t-4 border-slate-200 bg-white p-8 ${primary ? "border-t-brand-600" : "border-t-slate-900"}`}>
-                  <p className={`text-sm font-semibold tracking-wider uppercase ${primary ? "text-brand-700" : "text-slate-600"}`}>{c.tag}</p>
-                  <h3 className="mt-2 text-2xl leading-snug font-bold tracking-tight text-slate-900">{c.title}</h3>
-                  <p className="mt-3 mb-8 text-slate-600">{c.desc}</p>
-                  <a
-                    href={href}
-                    className={`group mt-auto inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-base font-semibold text-white transition ${primary ? "bg-brand-600 hover:bg-brand-700" : "bg-slate-900 hover:bg-slate-700"}`}
-                  >
-                    {c.button}
-                    <Icon d={ARROW} className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </div>
-              ))}
-            </div>
+            <SectionHead title={t.choose.title} lead={t.choose.desc} />
+            <a
+              href={`/${lang}/quote`}
+              className="group mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition hover:bg-brand-700"
+            >
+              {t.choose.button}
+              <Icon d={ARROW} className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </a>
+            <p className="mt-6 text-sm text-slate-600">
+              {t.choose.supplierPrompt}{" "}
+              <a href={`/${lang}/suppliers`} className="font-medium text-slate-900 underline underline-offset-4 hover:text-brand-700">
+                {t.choose.supplierLink}
+              </a>
+            </p>
           </div>
         </section>
 

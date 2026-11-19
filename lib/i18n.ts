@@ -32,10 +32,9 @@ const en = {
   nav: {
     home: "Home",
     services: "What we supply",
-    buyers: "For buyers",
+    quote: "Request a quote",
     suppliers: "For suppliers",
     contact: "Contact",
-    cta: "Request a quote",
   },
   hero: {
     eyebrow: "Procurement company in Thailand",
@@ -106,19 +105,11 @@ const en = {
     subject: "Supplier sign-up from taihue.com",
   },
   choose: {
-    title: "Buyers and suppliers",
-    buyer: {
-      tag: "For buyers / factories",
-      title: "Request a quote",
-      desc: "Send your RFQ, an item list or a photo. We reply with a quotation.",
-      button: "Request a quote",
-    },
-    supplier: {
-      tag: "For suppliers",
-      title: "Become a supplier",
-      desc: "Register your company and products. We send you RFQs that match.",
-      button: "Become a supplier",
-    },
+    title: "Request a quote",
+    desc: "Send your RFQ, an item list or a photo. We reply with a quotation.",
+    button: "Request a quote",
+    supplierPrompt: "Thai supplier?",
+    supplierLink: "Register as a supplier",
   },
   quotePage: {
     metaTitle: "Request a Quote | Taihue, Local Purchasing for Factories in Thailand",
@@ -188,10 +179,9 @@ const th: Dictionary = {
   nav: {
     home: "หน้าแรก",
     services: "สินค้าที่จัดหา",
-    buyers: "สำหรับผู้ซื้อ",
+    quote: "ขอใบเสนอราคา",
     suppliers: "สำหรับซัพพลายเออร์",
     contact: "ติดต่อ",
-    cta: "ขอใบเสนอราคา",
   },
   hero: {
     eyebrow: "บริษัทจัดซื้อในประเทศไทย",
@@ -262,19 +252,11 @@ const th: Dictionary = {
     subject: "Supplier sign-up from taihue.com (TH)",
   },
   choose: {
-    title: "ผู้ซื้อและซัพพลายเออร์",
-    buyer: {
-      tag: "สำหรับผู้ซื้อ / โรงงาน",
-      title: "ขอใบเสนอราคา",
-      desc: "ส่ง RFQ รายการสินค้า หรือรูปถ่ายมา เราจะตอบกลับพร้อมใบเสนอราคา",
-      button: "ขอใบเสนอราคา",
-    },
-    supplier: {
-      tag: "สำหรับซัพพลายเออร์",
-      title: "สมัครเป็นซัพพลายเออร์",
-      desc: "ลงทะเบียนบริษัทและสินค้าไว้ เราจะส่ง RFQ ที่ตรงกับสินค้าให้",
-      button: "สมัครเป็นซัพพลายเออร์",
-    },
+    title: "ขอใบเสนอราคา",
+    desc: "ส่ง RFQ รายการสินค้า หรือรูปถ่ายมา เราจะตอบกลับพร้อมใบเสนอราคา",
+    button: "ขอใบเสนอราคา",
+    supplierPrompt: "เป็นซัพพลายเออร์ไทย?",
+    supplierLink: "ลงทะเบียนเป็นซัพพลายเออร์",
   },
   quotePage: {
     metaTitle: "ขอใบเสนอราคา | Taihue ไทหือ จัดซื้อในไทยสำหรับโรงงาน",
@@ -342,10 +324,9 @@ const zh: Dictionary = {
   nav: {
     home: "首页",
     services: "供应品类",
-    buyers: "采购方",
+    quote: "获取报价",
     suppliers: "供应商",
     contact: "联系我们",
-    cta: "获取报价",
   },
   hero: {
     eyebrow: "泰国本地采购公司",
@@ -416,19 +397,11 @@ const zh: Dictionary = {
     subject: "Supplier sign-up from taihue.com (ZH)",
   },
   choose: {
-    title: "采购方与供应商",
-    buyer: {
-      tag: "采购方 / 工厂",
-      title: "获取报价",
-      desc: "发来询价单、物品清单或照片，我们回复报价单。",
-      button: "获取报价",
-    },
-    supplier: {
-      tag: "供应商",
-      title: "成为供应商",
-      desc: "登记公司和产品信息，有匹配的询价我们会发给您。",
-      button: "成为供应商",
-    },
+    title: "获取报价",
+    desc: "发来询价单、物品清单或照片，我们回复报价单。",
+    button: "获取报价",
+    supplierPrompt: "泰国供应商？",
+    supplierLink: "登记成为供应商",
   },
   quotePage: {
     metaTitle: "获取报价 | Taihue 在泰工厂本地采购",
