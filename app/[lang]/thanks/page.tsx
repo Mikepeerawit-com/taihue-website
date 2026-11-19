@@ -21,7 +21,7 @@ export default async function Thanks({ params }: Props) {
   const t = getDictionary(lang);
   return (
     <div className="flex min-h-screen flex-col">
-      <Header lang={lang} t={t} minimal />
+      <Header lang={lang} t={t} path="/thanks" minimal />
       <main className="flex flex-1 items-center">
         <div className="mx-auto max-w-xl px-4 py-20 text-center sm:px-6">
           <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-50 text-brand-600">
@@ -41,7 +41,7 @@ export default async function Thanks({ params }: Props) {
           </a>
         </div>
       </main>
-      <Footer lang={lang} t={t} />
+      <Footer lang={lang} t={t} path="/thanks" />
     </div>
   );
 }

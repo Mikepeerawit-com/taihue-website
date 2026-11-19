@@ -27,18 +27,21 @@ export function LangSwitcher({ lang, suffix = "", dark = false }: { lang: Locale
   );
 }
 
-function navLinks(t: Dictionary) {
+/** `path` is the current page below /[lang]: "", "/quote", "/suppliers" or "/thanks". */
+function navLinks(lang: Locale, t: Dictionary, path: string) {
+  const here = path === "/thanks" ? "" : path;
   return [
-    ["#services", t.nav.services],
-    ["#why", t.nav.why],
-    ["#how", t.nav.how],
-    ["#suppliers", t.nav.suppliers],
-    ["#contact", t.nav.contact],
+    [`/${lang}`, t.nav.home],
+    [`/${lang}#services`, t.nav.services],
+    [`/${lang}/quote`, t.nav.buyers],
+    [`/${lang}/suppliers`, t.nav.suppliers],
+    [`/${lang}${here}#contact`, t.nav.contact],
   ];
 }
 
-export default function Header({ lang, t, minimal = false }: { lang: Locale; t: Dictionary; minimal?: boolean }) {
-  const links = navLinks(t);
+export default function Header({ lang, t, path = "", minimal = false }: { lang: Locale; t: Dictionary; path?: string; minimal?: boolean }) {
+  const links = navLinks(lang, t, path);
+  const current = `/${lang}${path}`;
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/70">
       <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
@@ -53,7 +56,8 @@ export default function Header({ lang, t, minimal = false }: { lang: Locale; t: 
               <a
                 key={href}
                 href={href}
-                className="relative py-1 transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-brand-600 after:transition-transform hover:text-brand-700 hover:after:scale-x-100"
+                aria-current={href === current ? "page" : undefined}
+                className={`relative py-1 transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:rounded-full after:bg-brand-600 after:transition-transform hover:text-brand-700 hover:after:scale-x-100 ${href === current ? "text-brand-700 after:scale-x-100" : "after:scale-x-0"}`}
               >
                 {label}
               </a>
@@ -61,24 +65,24 @@ export default function Header({ lang, t, minimal = false }: { lang: Locale; t: 
           </nav>
         )}
         <div className="flex items-center gap-1.5 sm:gap-3">
-          <LangSwitcher lang={lang} suffix={minimal ? "/thanks" : ""} />
+          <LangSwitcher lang={lang} suffix={path} />
           {!minimal && (
             <a
-              href="#quote"
+              href={`/${lang}/quote`}
               className="hidden rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-brand-600/30 transition hover:-translate-y-0.5 hover:bg-brand-700 sm:inline-block"
             >
               {t.nav.cta}
             </a>
           )}
-          {!minimal && <MobileMenu links={links} cta={t.nav.cta} label={t.ui.menu} />}
+          {!minimal && <MobileMenu links={links} cta={t.nav.cta} ctaHref={`/${lang}/quote`} label={t.ui.menu} />}
         </div>
       </div>
     </header>
   );
 }
 
-export function Footer({ lang, t }: { lang: Locale; t: Dictionary }) {
-  const links = navLinks(t);
+export function Footer({ lang, t, path = "" }: { lang: Locale; t: Dictionary; path?: string }) {
+  const links = navLinks(lang, t, path);
   const head = "text-xs font-semibold tracking-widest text-slate-400 uppercase";
   return (
     <footer className="bg-slate-950 text-slate-300">
@@ -94,7 +98,7 @@ export function Footer({ lang, t }: { lang: Locale; t: Dictionary }) {
           <ul className="mt-4 space-y-2.5 text-sm">
             {links.map(([href, label]) => (
               <li key={href}>
-                <a href={`/${lang}${href}`} className="transition-colors hover:text-white">
+                <a href={href} className="transition-colors hover:text-white">
                   {label}
                 </a>
               </li>
@@ -107,16 +111,16 @@ export function Footer({ lang, t }: { lang: Locale; t: Dictionary }) {
             {contactEmail}
           </a>
           <div className="mt-5 flex flex-col gap-2.5 sm:flex-row md:flex-col lg:flex-row">
-            <a href={`/${lang}#quote`} className="rounded-lg bg-brand-600 px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-brand-500">
+            <a href={`/${lang}/quote`} className="rounded-lg bg-brand-600 px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-brand-500">
               {t.hero.primary}
             </a>
-            <a href={`/${lang}#suppliers`} className="rounded-lg border border-white/20 px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-white/10">
+            <a href={`/${lang}/suppliers`} className="rounded-lg border border-white/20 px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-white/10">
               {t.hero.secondary}
             </a>
           </div>
           <p className={`mt-7 ${head}`}>{t.ui.language}</p>
           <div className="mt-3 flex">
-            <LangSwitcher lang={lang} dark />
+            <LangSwitcher lang={lang} suffix={path} dark />
           </div>
         </div>
       </div>

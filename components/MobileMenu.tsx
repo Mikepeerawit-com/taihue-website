@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 /** Hamburger + dropdown panel for small screens. Closes when a link is tapped. */
-export default function MobileMenu({ links, cta, label }: { links: string[][]; cta: string; label: string }) {
+export default function MobileMenu({ links, cta, ctaHref, label }: { links: string[][]; cta: string; ctaHref: string; label: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="lg:hidden">
@@ -27,7 +27,7 @@ export default function MobileMenu({ links, cta, label }: { links: string[][]; c
                 {text}
               </a>
             ))}
-            <a href="#quote" onClick={() => setOpen(false)} className="mt-2 rounded-lg bg-brand-600 px-4 py-3 text-center font-semibold text-white hover:bg-brand-700">
+            <a href={ctaHref} onClick={() => setOpen(false)} className="mt-2 rounded-lg bg-brand-600 px-4 py-3 text-center font-semibold text-white hover:bg-brand-700">
               {cta}
             </a>
           </nav>
