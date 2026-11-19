@@ -27,17 +27,17 @@ export default async function QuotePage({ params }: Props) {
       <main>
         <PageHero eyebrow={p.eyebrow} title={p.title} lead={p.lead} cta={p.toForm} href="#form" src="/images/delivery-container.webp" alt={t.photos.delivery} />
 
-        <Steps title={p.howTitle} lead={t.how.lead} steps={t.how.steps} />
+        <Steps title={p.howTitle} steps={t.how.steps} />
 
         {/* Quote form */}
-        <section id="form" className="relative isolate overflow-hidden bg-gradient-to-b from-brand-50 to-white py-20 sm:py-28">
+        <section id="form" className="bg-slate-50 py-20 sm:py-28">
           <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-5 lg:gap-14">
             <div className="reveal lg:col-span-2">
               <SectionHead title={t.quote.title} lead={t.quote.lead} center={false} />
-              <CheckList items={t.hero.points} className="mt-8" />
-              <Photo src="/images/racking-materials.webp" alt={t.photos.materials} className="mt-12 ml-3 hidden lg:block" />
+              <CheckList items={t.quote.points} className="mt-8" />
+              <Photo src="/images/racking-materials.webp" alt={t.photos.materials} className="mt-12 hidden lg:block" />
             </div>
-            <div className="reveal rounded-3xl border-t-4 border-brand-600 bg-white p-6 shadow-2xl ring-1 shadow-slate-900/10 ring-slate-900/5 sm:p-10 lg:col-span-3 lg:self-start">
+            <div className="rounded-lg border border-t-4 border-slate-200 border-t-brand-600 bg-white p-6 sm:p-10 lg:col-span-3 lg:self-start">
               <QuoteForm lang={lang} t={t} />
             </div>
           </div>
