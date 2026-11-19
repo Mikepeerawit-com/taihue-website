@@ -5,9 +5,9 @@ const ACCEPT = ".xls,.xlsx,.pdf,.png,.jpg,.jpeg,.webp,image/*";
 
 function Label({ text, optional }: { text: string; optional?: string }) {
   return (
-    <span className="text-sm font-medium text-neutral-800">
+    <span className="text-sm font-medium text-slate-800">
       {text}
-      {optional ? <span className="ml-1 font-normal text-neutral-500">({optional})</span> : <span className="ml-0.5 text-brand-600">*</span>}
+      {optional ? <span className="ml-1 font-normal text-slate-500">({optional})</span> : <span className="ml-0.5 text-brand-600">*</span>}
     </span>
   );
 }
@@ -62,7 +62,7 @@ function Shell({
       <div className="sm:col-span-2">
         <button
           type="submit"
-          className="w-full rounded-lg bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand-700 focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 focus-visible:outline-none sm:w-auto"
+          className="w-full rounded-xl bg-brand-600 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 focus-visible:outline-none sm:w-auto"
         >
           {submit}
         </button>
@@ -76,12 +76,12 @@ function FileField({ label, t }: { label: string; t: Dictionary }) {
     <label className="block sm:col-span-2">
       <Label text={label} optional={t.form.optional} />
       <input
-        className="mt-1 block w-full rounded-lg border border-dashed border-neutral-300 bg-white text-sm text-neutral-600 file:mr-3 file:cursor-pointer file:border-0 file:bg-brand-50 file:px-4 file:py-2.5 file:font-medium file:text-brand-700"
+        className="mt-1 block w-full rounded-lg border border-dashed border-slate-300 bg-white text-sm text-slate-600 file:mr-3 file:cursor-pointer file:border-0 file:bg-brand-50 file:px-4 file:py-2.5 file:font-medium file:text-brand-700"
         type="file"
         name="attachment"
         accept={ACCEPT}
       />
-      <span className="mt-1 block text-xs text-neutral-500">{t.form.fileHint}</span>
+      <span className="mt-1 block text-xs text-slate-500">{t.form.fileHint}</span>
     </label>
   );
 }

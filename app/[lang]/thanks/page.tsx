@@ -29,8 +29,8 @@ export default async function Thanks({ params }: Props) {
               <path d="M4 10.5l4 4 8-9" />
             </svg>
           </span>
-          <h1 className="mt-6 text-2xl leading-snug font-bold text-neutral-900 sm:text-3xl">{t.thanks.title}</h1>
-          <p className="mt-4 text-neutral-600">
+          <h1 className="mt-6 text-2xl leading-snug font-bold text-slate-900 sm:text-3xl">{t.thanks.title}</h1>
+          <p className="mt-4 text-slate-600">
             {t.thanks.body}{" "}
             <a href={`mailto:${contactEmail}`} className="font-medium text-brand-700 hover:underline">
               {contactEmail}

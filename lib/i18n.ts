@@ -17,6 +17,13 @@ export function isLocale(v: string): v is Locale {
 const en = {
   companyName: "Taihue International Medical Co., Ltd.",
   brand: "Taihue",
+  ui: { menu: "Menu", language: "Language", explore: "Explore" },
+  photos: {
+    hero: "Interior of a large steel-frame industrial warehouse in Thailand",
+    delivery: "Workers unloading wrapped equipment from a shipping container at a factory in Thailand",
+    install: "Steel racking beams laid out and being installed inside a factory warehouse",
+    materials: "Racking parts sorted in wire mesh trolleys on a factory floor",
+  },
   meta: {
     title: "Taihue | Local Thai Sourcing & Procurement for Chinese Factories in Thailand",
     description:
@@ -120,6 +127,13 @@ export type Dictionary = typeof en;
 const th: Dictionary = {
   companyName: "บริษัท ไทหือ อินเตอร์เนชั่นแนล เมดิเคิล จำกัด",
   brand: "Taihue",
+  ui: { menu: "เมนู", language: "ภาษา", explore: "เมนูหลัก" },
+  photos: {
+    hero: "ภายในคลังสินค้าอุตสาหกรรมโครงสร้างเหล็กขนาดใหญ่ในประเทศไทย",
+    delivery: "พนักงานกำลังขนถ่ายอุปกรณ์ที่ห่อหุ้มไว้ออกจากตู้คอนเทนเนอร์ที่โรงงานในประเทศไทย",
+    install: "คานชั้นวางเหล็กที่จัดเรียงและกำลังติดตั้งภายในคลังสินค้าของโรงงาน",
+    materials: "ชิ้นส่วนชั้นวางที่คัดแยกไว้ในรถเข็นตะแกรงเหล็กบนพื้นโรงงาน",
+  },
   meta: {
     title: "Taihue ไทหือ | จัดหาและจัดซื้อสินค้าในไทยสำหรับโรงงานจีนในประเทศไทย",
     description:
@@ -221,6 +235,13 @@ const th: Dictionary = {
 const zh: Dictionary = {
   companyName: "Taihue International Medical Co., Ltd.",
   brand: "Taihue",
+  ui: { menu: "菜单", language: "语言", explore: "导航" },
+  photos: {
+    hero: "泰国大型钢结构工业仓库内部",
+    delivery: "工人在泰国工厂从集装箱卸下包装好的设备",
+    install: "工厂仓库内摆放并正在安装的钢制货架横梁",
+    materials: "工厂地面上分类放在铁丝网周转车里的货架配件",
+  },
   meta: {
     title: "Taihue | 在泰中资工厂的本地寻源与采购服务",
     description:
